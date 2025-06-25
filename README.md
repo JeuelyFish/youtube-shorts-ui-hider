@@ -1,0 +1,49 @@
+# YouTube Shorts UI Hider
+
+A minimal browser extension that hides distracting interface elements on YouTube Shorts — until you hover over the video player.
+
+## 🎥 Demo
+
+<p align="center">
+  <a href="https://youtu.be/GJuy2bM7kRA">
+    <img style="height: 300px" src="https://img.youtube.com/vi/GJuy2bM7kRA/hqdefault.jpg" alt="Watch the demo" />
+  </a>
+</p>
+
+Click the image above to watch a quick demo of the YouTube Shorts UI Hider extension in action.
+
+
+## ✨ Features
+
+- Hides the top player controls and bottom overlay (likes, comments, etc.)
+- Reveals them when you move your mouse over the video
+- Only activates on desktop (not on mobile)
+- Lightweight and silent — no configuration needed
+
+## 🧪 Local Installation for Development
+
+You can install the extension in Chrome and Firefox without publishing it.
+
+### 🔹 Chrome (or Chromium-based)
+
+1. Go to `chrome://extensions`
+2. Enable **Developer mode** (top right)
+3. Click **Load unpacked**
+4. Select the `extension/` folder inside this project
+
+### 🔸 Firefox
+
+1. Go to `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on**
+3. Select any file inside the `extension/` folder (e.g., `manifest.json`)
+
+## 🛠 Development Notes
+
+- The script uses `MutationObserver` to attach hover listeners as YouTube loads new content
+- Listeners are only attached once per video container to avoid memory issues
+- The extension avoids mobile devices using a `navigator.userAgent` check
+
+## 📃 License
+
+MIT — free to modify, share, or remix. Have fun with it.
+
