@@ -6,7 +6,7 @@ A minimal browser extension that hides distracting interface elements on YouTube
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=fzLRKWKplSE">
-    <img src="https://img.youtube.com/vi/fzLRKWKplSE/hqdefault.jpg" alt="Watch the demo" />
+    <img height="360px" src="./demo-thumbnail.png" alt="Watch the demo" />
   </a>
 </p>
 
@@ -45,5 +45,5 @@ You can install the extension in Chrome and Firefox without publishing it.
 
 ## 📃 License
 
-MIT — free to modify, share, or remix. Have fun with it.
+MIT - free to modify, share, or remix. Have fun with it.
 
