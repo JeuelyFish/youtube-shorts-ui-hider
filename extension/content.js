@@ -1,46 +1,62 @@
-function toggleElementsVisibility(isHovering) {
-  const selectors = [
-    ".player-controls", // top screen controls
-    "#overlay", // bottom screen info
-  ];
+const HOVER_TOGGLE_SELECTORS = [".player-controls", ".metadata-container"];
 
-  selectors.forEach((selector) => {
-    const el = document.querySelector(selector);
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
+
+function hasAllTargetElements(parent) {
+  return HOVER_TOGGLE_SELECTORS.every((selector) =>
+    parent.querySelector(selector)
+  );
+}
+
+function setElementsVisibility(centeredReel, isHovering) {
+  HOVER_TOGGLE_SELECTORS.forEach((selector) => {
+    const el = centeredReel.querySelector(selector);
     if (el) {
       el.style.visibility = isHovering ? "visible" : "hidden";
     }
   });
 }
 
-function setupHoverListener() {
-  const playerContainer = document.querySelector("#shorts-inner-container");
-  if (
-    !playerContainer ||
-    playerContainer.dataset.ytShortsUiHiderListenerAttached === "true"
-  )
-    return;
-
-  playerContainer.dataset.ytShortsUiHiderListenerAttached = "true";
-
-  playerContainer.addEventListener("mouseenter", () => {
-    toggleElementsVisibility(true);
+function addHoverToggle(targetElement) {
+  targetElement.addEventListener("mouseenter", () => {
+    setElementsVisibility(targetElement, true);
   });
-
-  playerContainer.addEventListener("mouseleave", () => {
-    toggleElementsVisibility(false);
+  targetElement.addEventListener("mouseleave", () => {
+    setElementsVisibility(targetElement, false);
   });
-
-  // Set initial state based on not hovering
-  toggleElementsVisibility(false);
+  setElementsVisibility(targetElement, false);
 }
 
-const isMobile =
-  /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
+function getCenterReel() {
+  const centerY = window.innerHeight / 2;
+  const reels = document.querySelectorAll(
+    `#shorts-inner-container .reel-video-in-sequence-new`
   );
 
-// Only run script on desktop
-if (!isMobile) {
+  return Array.from(reels).find((reel) => {
+    const rect = reel.getBoundingClientRect();
+    return rect.top <= centerY && rect.bottom >= centerY;
+  });
+}
+
+function setupHoverListener() {
+  const centerReel = getCenterReel();
+  if (!centerReel) return;
+
+  const reelHasTargetElements = hasAllTargetElements(centerReel);
+  if (!reelHasTargetElements) return;
+
+  if (centerReel.dataset.ytShortsUiHiderListenerAttached === "true") return;
+  centerReel.dataset.ytShortsUiHiderListenerAttached = "true";
+
+  addHoverToggle(centerReel);
+}
+
+if (!isMobileDevice()) {
   setupHoverListener();
   const observer = new MutationObserver(() => {
     setupHoverListener();

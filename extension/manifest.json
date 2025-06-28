@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
   "name": "YouTube Shorts UI Hider",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Hides certain elements on YouTube Shorts",
-  "host_permissions": ["https://www.youtube.com/shorts/*"],
+  "host_permissions": ["https://www.youtube.com/*"],
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/shorts/*"],
+      "matches": ["https://www.youtube.com/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
