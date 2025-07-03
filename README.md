@@ -1,6 +1,6 @@
 # YouTube Shorts UI Hider
 
-A minimal browser extension that hides distracting interface elements on YouTube Shorts, until you hover over the video player.
+A minimal browser extension that hides distracting interface elements on YouTube Shorts until you hover over the video player. Published versions are available on the [Chrome Web Store](https://chromewebstore.google.com/detail/youtube-shorts-ui-hider/bpfjbaklbpmalhhaddfmfcalengdaegi) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/youtube-shorts-ui-hider/) websites.
 
 ## 🎥 Demo
 
@@ -11,7 +11,6 @@ A minimal browser extension that hides distracting interface elements on YouTube
 </p>
 
 Click the image above to watch a quick demo of the YouTube Shorts UI Hider extension in action.
-
 
 ## ✨ Features
 
@@ -46,4 +45,3 @@ You can install the extension in Chrome and Firefox without publishing it.
 ## 📃 License
 
 MIT - free to modify, share, or remix. Have fun with it.
-
